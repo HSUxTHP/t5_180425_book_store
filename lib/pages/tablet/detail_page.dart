@@ -41,8 +41,8 @@ class _DetailPageState extends State<DetailPage> {
                         borderRadius: BorderRadius.circular(16),
                         child: Image.asset(
                           book.imageUrl[currentIndex],
-                          height: 500,
-                          width: 500,
+                          height: 400,
+                          width: 400,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -146,12 +146,18 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      book.description,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black54,
-                        height: 1.4,
+                    Container(
+                      width: 400,
+                      child: Text(
+                        book.description,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black54,
+                          height: 1.4,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -253,6 +259,7 @@ class _DetailPageState extends State<DetailPage> {
                           icon: const Icon(Icons.shopping_cart),
                           label: const Text("Add to Cart"),
                         ),
+                        const SizedBox(width: 20),
                         ElevatedButton.icon(
                           onPressed: () async {
                             if (!(book.dateSell!.isBefore(DateTime.now()))) {

@@ -49,6 +49,8 @@ class _ProductCartState extends State<ProductCart> {
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.2,
               ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 6),
             Text(
@@ -67,6 +69,8 @@ class _ProductCartState extends State<ProductCart> {
                 color: Colors.black54,
                 height: 1.4,
               ),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
             //dateSell is later than now

@@ -29,9 +29,52 @@ class _DestopLayoutState extends State<DestopLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        // title: const Text('Home Page'),
+        title: Row(
+          children: [
+            TextButton.icon(
+              onPressed: () {
+                setState(() => _selectedIndex = 0);
+              },
+              icon: Icon(Icons.home, color: _selectedIndex == 0 ? Colors.white : Colors.white70),
+              label: Text(
+                'Home',
+                style: TextStyle(
+                  color: _selectedIndex == 0 ? Colors.white : Colors.white70,
+                  fontWeight: _selectedIndex == 0 ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+            ),
+            TextButton.icon(
+              onPressed: () {
+                setState(() => _selectedIndex = 1);
+              },
+              icon: Icon(Icons.shopping_cart, color: _selectedIndex == 1 ? Colors.white : Colors.white70),
+              label: Text(
+                'Cart',
+                style: TextStyle(
+                  color: _selectedIndex == 1 ? Colors.white : Colors.white70,
+                  fontWeight: _selectedIndex == 1 ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+            ),
+            TextButton.icon(
+              onPressed: () {
+                setState(() => _selectedIndex = 2);
+              },
+              icon: Icon(Icons.person, color: _selectedIndex == 2 ? Colors.white : Colors.white70),
+              label: Text(
+                'Profile',
+                style: TextStyle(
+                  color: _selectedIndex == 2 ? Colors.white : Colors.white70,
+                  fontWeight: _selectedIndex == 2 ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
+
+
       body: _pages[_selectedIndex],
       drawer: Drawer(
               child: ListView(

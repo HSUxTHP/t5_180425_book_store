@@ -50,7 +50,8 @@ class ProfilePage extends StatelessWidget {
                   },
                   child: BookCard(book: book),
                 );
-              } else {
+              }
+              else {
                 return const SizedBox.shrink();
               }
             },

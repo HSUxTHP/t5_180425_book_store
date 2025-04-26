@@ -29,7 +29,7 @@ class _DetailPageState extends State<DetailPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Center(
           child: SizedBox(
-            width: 1000,
+            width: 1400,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -119,6 +119,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 const SizedBox(width: 20),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       book.name,
@@ -146,12 +147,18 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      book.description,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black54,
-                        height: 1.4,
+                    Container(
+                      width: 700,
+                      child: Text(
+                        book.description,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black54,
+                          height: 1.4,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -253,6 +260,7 @@ class _DetailPageState extends State<DetailPage> {
                           icon: const Icon(Icons.shopping_cart),
                           label: const Text("Add to Cart"),
                         ),
+                        const SizedBox(width: 20),
                         ElevatedButton.icon(
                           onPressed: () async {
                             if (!(book.dateSell!.isBefore(DateTime.now()))) {

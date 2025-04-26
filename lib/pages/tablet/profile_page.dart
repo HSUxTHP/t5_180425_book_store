@@ -34,25 +34,48 @@ class ProfilePage extends StatelessWidget {
             );
           }
 
-          return ListView.separated(
-            padding: const EdgeInsets.all(16),
-            itemCount: books.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
-            itemBuilder: (context, index) {
-              final book = books[index];
+          return Scaffold(
+            body: Column(
+              children: [
+                AspectRatio(
+                  aspectRatio: 1.65,
+                  child: SizedBox(
+                    height: double.infinity,
+                    child: Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 2 / 3,
+                        ),
+                        itemCount: books.length,
+                        // separatorBuilder: (_, __) => const SizedBox(height: 12),
+                        itemBuilder: (context, index) {
+                          final book = books[index];
 
-              if (book.isEBook) {
-                return InkWell(
-                  onTap: () {
-                    print("Read: ${book.name}");
-                    Navigator.pushNamed(context, '/read', arguments: book);
-                  },
-                  child: BookCard(book: book),
-                );
-              } else {
-                return const SizedBox.shrink();
-              }
-            },
+                          if (book.isEBook) {
+                            return InkWell(
+                              onTap: () {
+                                print("Read: ${book.name}");
+                                Navigator.pushNamed(
+                                  context,
+                                  '/read',
+                                  arguments: book,
+                                );
+                              },
+                              child: BookCard(book: book),
+                            );
+                          }
+                          else {
+                            return const SizedBox.shrink();
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
